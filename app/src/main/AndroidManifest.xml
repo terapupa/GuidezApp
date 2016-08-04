@@ -15,7 +15,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".PreferenceActivity" />
         <activity
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings"
@@ -25,32 +24,12 @@
                 android:value="com.guidezup.guidezapp.MainActivity" />
         </activity>
         <activity
-            android:name=".Main2Activity"
-            android:label="@string/title_activity_main2"
-            android:parentActivityName=".MainActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
+            android:name=".AnotherSettingsActivity"
+            android:label="@string/title_activity_another_settings"
+            android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.guidezup.guidezapp.MainActivity" />
-        </activity>
-        <activity
-            android:name=".NavActivity"
-            android:label="@string/title_activity_nav"
-            android:parentActivityName=".Main2Activity"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.guidezup.guidezapp.Main2Activity" />
-        </activity>
-        <activity
-            android:name=".Main3Activity"
-            android:label="@string/title_activity_main3"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <CheckBoxPreference
+        android:defaultValue="false"
+        android:key="notifications"
+        android:summary="@string/pref_notifications_summary"
+        android:title="@string/pref_notifications_title"/>
+
+    <ListPreference
+        android:defaultValue="0"
+        android:entries="@array/pref_ui_language_list_titles"
+        android:entryValues="@array/pref_ui_language_list_values"
+        android:key="ui_language"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null"
+        android:title="@string/pref_title_ui_language"
+        android:summary="@string/pref_ui_language_summary"
+
+        />
+
+    <MultiSelectListPreference
+        android:dialogTitle="@string/pref_guide_language_title"
+        android:key="mode_repeat"
+        android:title="@string/pref_guide_language_title"
+        android:entries="@array/pref_ui_language_list_titles"
+        android:entryValues="@array/pref_ui_language_list_values"
+        android:defaultValue="@array/pref_ui_language_list_values"
+        android:summary="@string/pref_guide_language_summary"
+
+        />
+
+</PreferenceScreen>
