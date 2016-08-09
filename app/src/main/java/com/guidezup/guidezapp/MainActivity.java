@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.service.voice.VoiceInteractionSession;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
@@ -19,7 +20,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.MapsInitializer;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+
 public class MainActivity extends AppCompatActivity {
+
+
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
@@ -77,7 +88,11 @@ public class MainActivity extends AppCompatActivity {
     /**
      * A placeholder fragment containing a simple view.
      */
-    public static class PlaceholderFragment extends Fragment {
+    public static class PlaceholderFragment extends Fragment implements OnMapReadyCallback {
+
+        private GoogleMap mMap;
+        private MapView mMapView;
+
         /**
          * The fragment argument representing the section number for this
          * fragment.
@@ -105,11 +120,29 @@ public class MainActivity extends AppCompatActivity {
             int section = getArguments().getInt(ARG_SECTION_NUMBER);
             if (section == 1)
             {
-                return inflater.inflate(R.layout.fragment_list_tab, container, false);
+
+                View view =  inflater.inflate(R.layout.fragment_list_tab, container, false);
+
+                return view;
             }
             else
             {
-                return inflater.inflate(R.layout.fragment_map_tab, container, false);
+                View view =   inflater.inflate(R.layout.fragment_map_tab, container, false);
+                mMapView = (MapView) view.findViewById(R.id.mapView);
+
+                mMapView.onCreate(savedInstanceState);
+
+                mMapView.onResume();// needed to get the map to display immediately
+
+                try {
+                    MapsInitializer.initialize(getActivity().getApplicationContext());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                mMapView.getMapAsync(this);
+                return view;
+
 
             }
 
@@ -117,6 +150,16 @@ public class MainActivity extends AppCompatActivity {
 //            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
 //            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
 //            return rootView;
+        }
+
+        @Override
+        public void onMapReady(GoogleMap googleMap) {
+            mMap = googleMap;
+
+            // Add a marker in Sydney and move the camera
+            LatLng sydney = new LatLng(-34, 151);
+            mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
         }
     }
 

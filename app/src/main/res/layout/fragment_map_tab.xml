@@ -6,13 +6,14 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:id="@+id/mapInTab"
+    android:name="com.google.android.gms.maps.SupportMapFragment"
+    tools:context=".MapFragmentTab">
 
-    tools:context="com.guidezup.guidezapp.MapFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/mapView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="MAP" />
+        android:layout_height="match_parent"/>
 
 </FrameLayout>
