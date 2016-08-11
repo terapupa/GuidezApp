@@ -45,22 +45,6 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity
-            android:name=".MapsActivity"
-            android:label="@string/title_activity_maps">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.guidezup.guidezapp.MainActivity" />
-        </activity>
-        <activity
-            android:name=".Tab2Activity"
-            android:label="@string/title_activity_tab2"
-            android:parentActivityName=".MainActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.guidezup.guidezapp.MainActivity" />
-        </activity>
     </application>
 
 </manifest>
